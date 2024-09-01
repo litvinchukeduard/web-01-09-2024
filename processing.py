@@ -37,10 +37,12 @@ def create_image_copies(n: int):
 
 # print('folder/file.png'.split('/'))
 # transfer_photo_to_bw('source_images/image-1.png')
-with Pool(cpu_count()) as pool:
-    file_names = []
-    for i in range(1000):
-        file_names.append(f'{images_dir}/image-{i}.png')
-    # print(file_names)
-    pool.map(transfer_photo_to_bw, file_names)
-    # pool.map()
+
+if __name__ == '__main__':
+    with Pool() as pool:
+        file_names = []
+        for i in range(1000):
+            file_names.append(f'{images_dir}/image-{i}.png')
+        # print(file_names)
+        pool.map(transfer_photo_to_bw, file_names)
+        # pool.map()
