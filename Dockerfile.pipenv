@@ -1,0 +1,14 @@
+FROM python:3.12-slim
+
+ENV APP_FOLDER=/app
+
+WORKDIR $APP_FOLDER
+
+COPY . $APP_FOLDER
+
+RUN pip install pipenv
+RUN pipenv install --system
+
+ENTRYPOINT ["python", "main.py"]
+
+# docker build -f Dockerfile.pipenv
